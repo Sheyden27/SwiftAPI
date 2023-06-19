@@ -25,8 +25,9 @@ struct WeatherService {
     
 
     func searchWeather(city: String) async throws {
-        // remplacer latitude & longitude par coords de searchCity
         let coords = searchCity("Versailles")
+        // pour l'input avec city latitude & longitude par coords de searchCity
+        // url = "https://api.open-meteo.com/v1/forecast?latitude=\(coords[0])&longitude=\(coords[1])&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,rain,weathercode,surface_pressure,visibility,windspeed_10m,winddirection_10m&timezone=Europe%2FLondon"
         let url = URL(string: "https://api.open-meteo.com/v1/forecast?latitude=48.80&longitude=2.13&hourly=temperature_2m,relativehumidity_2m,apparent_temperature,precipitation_probability,rain,weathercode,surface_pressure,visibility,windspeed_10m,winddirection_10m&timezone=Europe%2FLondon")
         guard let url = url else {
             throw InvalidURLError()
